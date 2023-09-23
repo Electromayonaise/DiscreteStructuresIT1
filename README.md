@@ -16,7 +16,7 @@
 <!--h2 without bottom border-->
 <div id="user-content-toc">
   <ul align="center">
-     <summary><h2 style="display: inline-block">Codes: A00399958 ,A00400104, A00396342</h2></summary>
+     <summary><h2 style="display: inline-block">Codes: A00399958 ,A00399637,A00399937 </h2></summary>
     <body><h3 style="display: inline-block">First integrative task of the discrete structures course</h3></body>
   </ul>
 </div>

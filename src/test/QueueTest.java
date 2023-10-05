@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class QueueTest {
     private Queue<Integer> queue;
-    private int NUM_ELEMENTS =100;
+    private final int NUM_ELEMENTS =100;
 
     public void setUpEmptyQueue(){ // Cr
         queue=new DoublyLinkedList<>();

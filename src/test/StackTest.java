@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class StackTest {
     private Stack<Integer> stack;
-    private int NUM_ELEMENTS =100;
+    private final int NUM_ELEMENTS =100;
 
     public void setUpEmptyStack(){ // Cr
         stack=new DoublyLinkedList<>();

@@ -10,35 +10,17 @@ public class DoublyLinkedList <T> implements Queue<T>, Stack<T>{
         size=0;
     }
 
-
-    public void addFirst (T newValue){
-        Node <T>newNode=new Node<>(newValue);
-        if(head==null){
-            head=newNode;
-            tail=newNode;
-            head.setNext(tail);
-            tail.setPrev(head);
-        }else{
-            newNode.setNext(head);
-            head.setPrev(newNode);
-            head=newNode;
-        }
-        size++;
-
-
-    }
     public void addLast(T newValue){
         Node <T>newNode=new Node<>(newValue);
         if(head==null){
             head=newNode;
-            tail=newNode;
-            head.setNext(tail);
-            tail.setPrev(head);
+
         }else{
             tail.setNext(newNode);
             newNode.setPrev(tail);
-            tail=newNode;
+
         }
+        tail=newNode;
         size++;
     }
 
@@ -91,6 +73,57 @@ public class DoublyLinkedList <T> implements Queue<T>, Stack<T>{
 
     public T getLast(){
         return (tail==null)?null:tail.getValue();
+    }
+    private <U>Node<T> getFirstNodeWithInstance(U object,BiPredicate<T,U> equals ){
+        Node<T> firstNode=null;
+        Node <T> current=head;
+        boolean flag=false;
+        while(current!=null&&!flag){
+            if(equals.test(current.getValue(),object)){
+                firstNode= current;
+                flag=true;
+            }
+            current=current.getNext();
+        }
+        return firstNode;
+    }
+
+
+
+
+    public <U>T getFirstInstance(U object,BiPredicate<T,U> equals ){
+        T value=null;
+        Node<T> node= getFirstNodeWithInstance(object,equals);
+        if(node!=null){
+            value=node.getValue();
+        }
+        return value;
+    }
+
+    public <U>boolean removeFirstInstance(U object, BiPredicate<T,U>equals){
+        Node<T> nodeToDelete=getFirstNodeWithInstance(object,equals);
+        boolean removed=false;
+        if(nodeToDelete!=null) {
+            if (nodeToDelete.getPrev() != null) {
+                nodeToDelete.getPrev().setNext(nodeToDelete.getNext());
+
+            } else {
+                head = nodeToDelete.getNext();
+            }
+            if (nodeToDelete.getNext() != null) {
+                nodeToDelete.getNext().setPrev(nodeToDelete.getPrev());
+
+            } else {
+                tail = nodeToDelete.getPrev();
+            }
+            nodeToDelete.setPrev(null);
+            nodeToDelete.setNext(null);
+            size--;
+            removed=true;
+        }
+
+
+        return removed;
     }
 
 

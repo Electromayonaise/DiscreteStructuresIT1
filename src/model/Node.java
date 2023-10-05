@@ -2,9 +2,9 @@ package model;
 
 public class Node <T> {
     private T value;
-    private Node next;
+    private Node<T> next;
 
-    private Node prev;
+    private Node<T> prev;
 
     public Node(T value) {
         this.value = value;
@@ -18,19 +18,19 @@ public class Node <T> {
         this.value = value;
     }
 
-    public Node getNext() {
+    public Node<T> getNext() {
         return next;
     }
 
-    public void setNext(Node next) {
+    public void setNext(Node<T> next) {
         this.next = next;
     }
 
-    public Node getPrev() {
+    public Node<T> getPrev() {
         return prev;
     }
 
-    public void setPrev(Node prev) {
+    public void setPrev(Node<T> prev) {
         this.prev = prev;
     }
 }

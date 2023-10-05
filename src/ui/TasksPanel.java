@@ -11,8 +11,16 @@ public class TasksPanel extends BasePanel {
     private final Color myRed = new Color(255, 175, 175);
     private final Color TASKCOLOR = new Color(90, 90, 90);
 
+    private JPanel displayPanel; // Panel for displaying tasks (by priority or arrival order)
+
+    private CardLayout cardLayout = new CardLayout();
+    private DefaultListModel<String> taskListModel;
+    private List<String> tasks; // List to store the displayed tasks
+    private boolean displayByPriority = true; // Track the current display mode
+
     public TasksPanel(JPanel containerPanel) {
         super(containerPanel);
+        tasks = fetchTasks(true); // Default to display tasks by priority
         initUI();
     }
 
@@ -32,29 +40,66 @@ public class TasksPanel extends BasePanel {
         contentPanel.setLayout(new BorderLayout()); // Use BorderLayout to display tasks as a list
         contentPanel.setOpaque(false); // Make the content panel transparent
 
-        List<String> tasks;
-        // Example content elements (you can replace these with your actual content)
-        int displayType = JOptionPane.showOptionDialog(this, "How would you like to display tasks?", "Display Tasks", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, new String[]{"By Priority", "By Arrival Order"}, "By Priority");
-        if (displayType == 0) {
-            // Display by priority
-            JLabel priorityLabel = new JLabel("Priority");
-            priorityLabel.setFont(new Font("Arial", Font.BOLD, 16));
-            priorityLabel.setForeground(myRed);
-            contentPanel.add(priorityLabel, BorderLayout.WEST); // Place the priority label on the left
-           tasks = fetchTasks(true); // Fetch tasks based on user choice
-        } else {
-            // Display by arrival order
-            JLabel arrivalOrderLabel = new JLabel("Arrival Order");
-            arrivalOrderLabel.setFont(new Font("Arial", Font.BOLD, 16));
-            arrivalOrderLabel.setForeground(myRed);
-            contentPanel.add(arrivalOrderLabel, BorderLayout.WEST); // Place the arrival order label on the left
-            tasks = fetchTasks(false); // Fetch tasks based on user choice
-        }
+        // Create a panel for the left column
+        JPanel leftColumnPanel = new JPanel(new BorderLayout());
+        leftColumnPanel.setOpaque(false);
 
-        DefaultListModel<String> taskListModel = new DefaultListModel<>();
+        // Create a button to switch display type
+        JButton toggleDisplayButton = createStyledButton("Change visualization", myRed, Color.WHITE);
+        toggleDisplayButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                displayByPriority = !displayByPriority; // Toggle the display mode
+                tasks = fetchTasks(displayByPriority); // Fetch tasks based on the new display mode
+                refreshDisplay(); // Update the displayed tasks
+            }
+        });
+
+    // Add the "Toggle Display" button to the left column panel
+        leftColumnPanel.add(toggleDisplayButton, BorderLayout.NORTH); // Add the button to the left column
+
+    // Add the leftColumnPanel to the main panel
+        add(leftColumnPanel, BorderLayout.WEST);
+
+        // Create a panel for displaying tasks (by priority or arrival order)
+        displayPanel = new JPanel(cardLayout);
+        displayPanel.setOpaque(false);
+
+        // Create a panel for displaying tasks by priority
+        JPanel priorityPanel = new JPanel(new BorderLayout());
+        JLabel priorityLabel = new JLabel("Priority");
+        priorityLabel.setFont(new Font("Arial", Font.BOLD, 16));
+        priorityLabel.setForeground(myRed);
+        priorityPanel.add(priorityLabel, BorderLayout.NORTH);
+        taskListModel = new DefaultListModel<>();
         for (String task : tasks) {
             taskListModel.addElement(task);
         }
+        JList<String> priorityList = new JList<>(taskListModel);
+        priorityList.setFont(new Font("Arial", Font.PLAIN, 16));
+        priorityList.setFont(new Font("Arial", Font.PLAIN, 16));
+        displayPanel.add(priorityPanel, "Priority");
+
+        // Create a panel for displaying tasks by arrival order
+        JPanel arrivalPanel = new JPanel(new BorderLayout());
+        JLabel arrivalLabel = new JLabel("Arrival Order");
+        arrivalLabel.setFont(new Font("Arial", Font.BOLD, 16));
+        arrivalLabel.setForeground(myRed);
+        arrivalPanel.add(arrivalLabel, BorderLayout.NORTH);
+        DefaultListModel<String> arrivalListModel = new DefaultListModel<>();
+        for (String task : tasks) {
+            arrivalListModel.addElement(task);
+        }
+        JList<String> arrivalList = new JList<>(arrivalListModel);
+        arrivalList.setFont(new Font("Arial", Font.PLAIN, 16));
+        displayPanel.add(arrivalPanel, "Arrival");
+
+        // Add the displayPanel to the left column
+        leftColumnPanel.add(displayPanel, BorderLayout.CENTER);
+
+        // Create a panel for the right column (buttons)
+        JPanel rightColumnPanel = new JPanel(new GridLayout(0, 2));
+        rightColumnPanel.setOpaque(false);
 
         JList<String> taskList = new JList<>(taskListModel);
         taskList.setFont(new Font("Arial", Font.PLAIN, 16));
@@ -67,6 +112,10 @@ public class TasksPanel extends BasePanel {
             if (!e.getValueIsAdjusting()) {
                 // Handle the task selection, e.g., show further info
                 String selectedTask = taskList.getSelectedValue();
+                // make it so that the user can't select a task that has been deleted
+                if (selectedTask == null) {
+                    return;
+                }
                 showTaskInfo(selectedTask);
             }
         });
@@ -115,6 +164,10 @@ public class TasksPanel extends BasePanel {
                 int selectedIndex = taskList.getSelectedIndex();
                 if (selectedIndex != -1) {
                     taskListModel.remove(selectedIndex);
+                    // Remove the selection of the user deleted task, so that a null message from the selection listener is not triggered
+                    taskList.clearSelection();
+                    // send a message of the successful deletion
+                    JOptionPane.showMessageDialog(TasksPanel.this, "Task deleted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
                 } else {
                     JOptionPane.showMessageDialog(TasksPanel.this, "Please select a task first.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
@@ -140,9 +193,6 @@ public class TasksPanel extends BasePanel {
                     if (taskPriority != null) {
                         String newTask = taskPriority + ": " + taskName;
                         taskListModel.addElement(newTask);
-                        // Save taskName and taskPriority to variables for later use
-                        String savedTaskName = taskName;
-                        String savedTaskPriority = taskPriority;
                     }
                 }
             }
@@ -189,14 +239,19 @@ public class TasksPanel extends BasePanel {
         }
     }
 
+    // Refresh the display panel to update the displayed tasks
+    private void refreshDisplay() {
+        cardLayout.show(displayPanel, displayByPriority ? "Priority" : "Arrival");
+        taskListModel.clear();
+        for (String task : tasks) {
+            taskListModel.addElement(task);
+        }
+    }
+
     // Example method to show further info (replace with your logic)
     private void showTaskInfo(String task) {
         // Replace this with your logic to display further task info
         JOptionPane.showMessageDialog(this, "Task selected: " + task + "\n" + "Priority", "Task Info", JOptionPane.INFORMATION_MESSAGE);
     }
 }
-
-
-
-
 

@@ -2,7 +2,7 @@ package model;
 
 import java.util.Arrays;
 
-public class Task {
+public class Task implements HeapKeyProvider{
     private String title;
     private String description;
     private int priorityLevel;
@@ -48,5 +48,15 @@ public class Task {
         attributes[1]=description;
         attributes[2]=priorityLevel+"";
         return Arrays.copyOf(attributes,attributes.length);
+    }
+
+    @Override
+    public int getHeapKey() {
+        return priorityLevel;
+    }
+
+    @Override
+    public void setHeapKey(int newKey) {
+        setPriorityLevel(newKey);
     }
 }

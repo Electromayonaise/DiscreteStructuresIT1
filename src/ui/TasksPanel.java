@@ -2,8 +2,6 @@ package ui;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.List;
 
 public class TasksPanel extends BasePanel {
@@ -11,9 +9,9 @@ public class TasksPanel extends BasePanel {
     private final Color myRed = new Color(255, 175, 175);
     private final Color TASKCOLOR = new Color(90, 90, 90);
 
-    private JPanel displayPanel; // Panel for displaying tasks (by priority or arrival order)
+    private JPanel displayPanel;
 
-    private CardLayout cardLayout = new CardLayout();
+    private final CardLayout cardLayout = new CardLayout();
     private DefaultListModel<String> taskListModel;
     private List<String> tasks; // List to store the displayed tasks
     private boolean displayByPriority = true; // Track the current display mode
@@ -45,14 +43,11 @@ public class TasksPanel extends BasePanel {
         leftColumnPanel.setOpaque(false);
 
         // Create a button to switch display type
-        JButton toggleDisplayButton = createStyledButton("Change visualization", myRed, Color.WHITE);
-        toggleDisplayButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                displayByPriority = !displayByPriority; // Toggle the display mode
-                tasks = fetchTasks(displayByPriority); // Fetch tasks based on the new display mode
-                refreshDisplay(); // Update the displayed tasks
-            }
+        JButton toggleDisplayButton = createStyledButton("Change visualization", myRed);
+        toggleDisplayButton.addActionListener(e -> {
+            displayByPriority = !displayByPriority; // Toggle the display mode
+            tasks = fetchTasks(displayByPriority); // Fetch tasks based on the new display mode
+            refreshDisplay(); // Update the displayed tasks
         });
 
     // Add the "Toggle Display" button to the left column panel
@@ -127,50 +122,44 @@ public class TasksPanel extends BasePanel {
         buttonPanel.setOpaque(false);
 
         // Modify button
-        JButton modifyButton = createStyledButton("Modify Task", myRed, Color.WHITE);
-        modifyButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                int selectedIndex = taskList.getSelectedIndex();
-                if (selectedIndex != -1) {
-                    String selectedTask = taskListModel.getElementAt(selectedIndex);
-                    String[] options = {"Modify Name", "Modify Priority"};
-                    int choice = JOptionPane.showOptionDialog(TasksPanel.this, "What would you like to modify?", "Modify Task", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+        JButton modifyButton = createStyledButton("Modify Task", myRed);
+        modifyButton.addActionListener(e -> {
+            int selectedIndex = taskList.getSelectedIndex();
+            if (selectedIndex != -1) {
+                String selectedTask = taskListModel.getElementAt(selectedIndex);
+                String[] options = {"Modify Name", "Modify Priority"};
+                int choice = JOptionPane.showOptionDialog(TasksPanel.this, "What would you like to modify?", "Modify Task", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
 
-                    if (choice == 0) {
-                        // Modify Name
-                        String modifiedName = JOptionPane.showInputDialog("Modify Task Name", selectedTask.split(":")[1].trim());
-                        if (modifiedName != null) {
-                            taskListModel.setElementAt("Task " + (selectedIndex + 1) + ": " + modifiedName, selectedIndex);
-                        }
-                    } else if (choice == 1) {
-                        // Modify Priority
-                        String modifiedPriority = JOptionPane.showInputDialog("Modify Task Priority", selectedTask.split(":")[0].trim());
-                        if (modifiedPriority != null) {
-                            taskListModel.setElementAt(modifiedPriority + ": " + selectedTask.split(":")[1].trim(), selectedIndex);
-                        }
+                if (choice == 0) {
+                    // Modify Name
+                    String modifiedName = JOptionPane.showInputDialog("Modify Task Name", selectedTask.split(":")[1].trim());
+                    if (modifiedName != null) {
+                        taskListModel.setElementAt("Task " + (selectedIndex + 1) + ": " + modifiedName, selectedIndex);
                     }
-                } else {
-                    JOptionPane.showMessageDialog(TasksPanel.this, "Please select a task first.", "Error", JOptionPane.ERROR_MESSAGE);
+                } else if (choice == 1) {
+                    // Modify Priority
+                    JSlider slider = getjSlider();
+                    JOptionPane.showMessageDialog(TasksPanel.this, slider, "Select new Task Priority", JOptionPane.QUESTION_MESSAGE);
+                    String modifiedPriority = slider.getValue() + "";
+                    taskListModel.setElementAt(modifiedPriority + ": " + selectedTask.split(":")[1].trim(), selectedIndex);
                 }
+            } else {
+                JOptionPane.showMessageDialog(TasksPanel.this, "Please select a task first.", "Error", JOptionPane.ERROR_MESSAGE);
             }
         });
 
         // Delete button
-        JButton deleteButton = createStyledButton("Delete Task", myRed, Color.WHITE);
-        deleteButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                int selectedIndex = taskList.getSelectedIndex();
-                if (selectedIndex != -1) {
-                    taskListModel.remove(selectedIndex);
-                    // Remove the selection of the user deleted task, so that a null message from the selection listener is not triggered
-                    taskList.clearSelection();
-                    // send a message of the successful deletion
-                    JOptionPane.showMessageDialog(TasksPanel.this, "Task deleted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
-                } else {
-                    JOptionPane.showMessageDialog(TasksPanel.this, "Please select a task first.", "Error", JOptionPane.ERROR_MESSAGE);
-                }
+        JButton deleteButton = createStyledButton("Delete Task", myRed);
+        deleteButton.addActionListener(e -> {
+            int selectedIndex = taskList.getSelectedIndex();
+            if (selectedIndex != -1) {
+                taskListModel.remove(selectedIndex);
+                // Remove the selection of the user deleted task, so that a null message from the selection listener is not triggered
+                taskList.clearSelection();
+                // send a message of the successful deletion
+                JOptionPane.showMessageDialog(TasksPanel.this, "Task deleted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(TasksPanel.this, "Please select a task first.", "Error", JOptionPane.ERROR_MESSAGE);
             }
         });
 
@@ -183,18 +172,15 @@ public class TasksPanel extends BasePanel {
         addTaskPanel.setOpaque(false);
 
         // Add Task button
-        JButton addButton = createStyledButton("Add Task", myRed, Color.WHITE);
-        addButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String taskName = JOptionPane.showInputDialog("Enter Task Name");
-                if (taskName != null) {
-                    String taskPriority = JOptionPane.showInputDialog("Enter Task Priority");
-                    if (taskPriority != null) {
-                        String newTask = taskPriority + ": " + taskName;
-                        taskListModel.addElement(newTask);
-                    }
-                }
+        JButton addButton = createStyledButton("Add Task", myRed);
+        addButton.addActionListener(e -> {
+            String taskName = JOptionPane.showInputDialog("Enter Task Name");
+            if (taskName != null) {
+                JSlider slider = getjSlider();
+                JOptionPane.showMessageDialog(TasksPanel.this, slider, "Select Task Priority", JOptionPane.QUESTION_MESSAGE);
+                String taskPriority = slider.getValue() + "";
+                String newTask = taskPriority + ": " + taskName;
+                taskListModel.addElement(newTask);
             }
         });
 
@@ -222,6 +208,23 @@ public class TasksPanel extends BasePanel {
         add(buttonsContainer, BorderLayout.SOUTH);
     }
 
+
+    private JSlider getjSlider() {
+        JSlider slider = new JSlider(JSlider.HORIZONTAL, 0, 3, 1);
+        slider.setMajorTickSpacing(1);
+        slider.setPaintTicks(true);
+        slider.setPaintLabels(true);
+        slider.setSnapToTicks(true);
+        slider.setOpaque(false);
+        slider.setForeground(myRed);
+        slider.setBackground(Color.WHITE);
+        slider.setPreferredSize(new Dimension(300, 100));
+        slider.setFont(new Font("Arial", Font.BOLD, 16));
+        slider.setBorder(BorderFactory.createEmptyBorder(20, 0, 20, 0));
+        return slider;
+    }
+
+
     // Fetch tasks based on user choice (priority or arrival order)
     private List<String> fetchTasks(boolean byPriority) {
         if (byPriority) {
@@ -248,7 +251,6 @@ public class TasksPanel extends BasePanel {
         }
     }
 
-    // Example method to show further info (replace with your logic)
     private void showTaskInfo(String task) {
         // Replace this with your logic to display further task info
         JOptionPane.showMessageDialog(this, "Task selected: " + task + "\n" + "Priority", "Task Info", JOptionPane.INFORMATION_MESSAGE);

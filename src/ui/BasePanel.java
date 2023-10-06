@@ -2,8 +2,6 @@ package ui;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class BasePanel extends JPanel {
 
@@ -25,24 +23,21 @@ public class BasePanel extends JPanel {
         gbc.gridy = 0;
         gbc.insets = new Insets(10, 10, 10, 10);
 
-        returnButton = createStyledButton("Return to Menu", new Color(255, 175, 175), Color.WHITE);
-        returnButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                CardLayout cardLayout = (CardLayout) containerPanel.getLayout();
-                cardLayout.show(containerPanel, "GeneralMenu");
-            }
+        returnButton = createStyledButton("Return to Menu", new Color(255, 175, 175));
+        returnButton.addActionListener(e -> {
+            CardLayout cardLayout = (CardLayout) containerPanel.getLayout();
+            cardLayout.show(containerPanel, "GeneralMenu");
         });
 
         add(returnButton, gbc);
     }
 
     // Helper method to create styled buttons
-    protected JButton createStyledButton(String text, Color bgColor, Color textColor) {
+    protected JButton createStyledButton(String text, Color bgColor) {
         JButton button = new JButton(text);
         button.setFont(new Font("Arial", Font.BOLD, 16));
         button.setBackground(bgColor);
-        button.setForeground(textColor);
+        button.setForeground(Color.WHITE);
         button.setFocusPainted(false);
         button.setPreferredSize(new Dimension(200, 40));
         return button;

@@ -59,4 +59,11 @@ public class Task implements HeapKeyProvider{
     public void setHeapKey(int newKey) {
         setPriorityLevel(newKey);
     }
+
+    public String hash(){
+        long key = getTitle().hashCode();
+        return Long.toString(key);
+    }
+
+
 }

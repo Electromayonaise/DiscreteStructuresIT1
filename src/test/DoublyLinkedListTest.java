@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class DoublyLinkedListTest {
     private DoublyLinkedList<Integer> list;
-    private final int NUM_ELEMENTS =4;
+    private final int NUM_ELEMENTS =40;
 
     public void setUpEmptyList(){ // Cr
         list=new DoublyLinkedList<>();
@@ -70,9 +70,26 @@ public class DoublyLinkedListTest {
 
         }
 
-
-
     }
+    @Test
+    public void testForEachListWithElements(){
+        setUpListWithElements();
+        int i=0;
+        for(Integer x: list){
+            assertEquals(i,x);
+            i++;
+        }
+    }
+    @Test
+    public void testForEachListWithNoElements(){
+        setUpEmptyList();
+        for(Integer x: list){
+            //the list is empty
+            //this line should be unreachable
+            assertEquals(x,1012);
+        }
+    }
+
 
 
 

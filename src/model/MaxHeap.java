@@ -1,6 +1,5 @@
 package model;
 
-import java.util.ArrayList;
 
 public class MaxHeap<T extends HeapKeyProvider > implements PriorityQueue<T> {
     private ArrayList<T> list;

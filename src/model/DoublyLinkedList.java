@@ -1,6 +1,8 @@
 package model;
 
-public class DoublyLinkedList <T> implements Queue<T>, Stack<T>{
+import java.util.Iterator;
+
+public class DoublyLinkedList <T> implements Queue<T>, Stack<T>, Iterable<T>{
     private Node<T> head;
     private Node<T> tail;
 
@@ -91,6 +93,7 @@ public class DoublyLinkedList <T> implements Queue<T>, Stack<T>{
 
 
 
+
     public <U>T getFirstInstance(U object,BiPredicate<T,U> equals ){
         T value=null;
         Node<T> node= getFirstNodeWithInstance(object,equals);
@@ -125,6 +128,34 @@ public class DoublyLinkedList <T> implements Queue<T>, Stack<T>{
 
         return removed;
     }
+
+
+    @Override
+    public Iterator<T> iterator() {
+        return new MyIterator();
+    }
+    private class MyIterator implements Iterator<T> {
+        private Node<T> currentNode;
+        MyIterator(){
+            currentNode =head;
+        }
+        @Override
+        public boolean hasNext() {
+            return currentNode !=null&& currentNode.getNext()!=null;
+        }
+        @Override
+        public T next() {
+            if (hasNext()) {
+                T valueToReturn=currentNode.getValue();
+                currentNode = currentNode.getNext();
+                return valueToReturn;
+            } else {
+                throw new java.util.NoSuchElementException();
+            }
+        }
+    }
+
+
 
 
     //********* Common methods******************//
@@ -174,4 +205,6 @@ public class DoublyLinkedList <T> implements Queue<T>, Stack<T>{
     public T pop() {
         return removeLast();
     }
+
+
 }

@@ -1,6 +1,6 @@
 package model;
 
-import java.util.Arrays;
+
 
 public class Task implements HeapKeyProvider{
     private String title;
@@ -36,18 +36,14 @@ public class Task implements HeapKeyProvider{
     public void setPriorityLevel(int priorityLevel) {
         this.priorityLevel = priorityLevel;
     }
-    @Override
-    public String toString()   {
-        return "title:"+title+ " description:"+description+" priorityLevel: "+priorityLevel;
-    }
 
 
-    public String[] getAttributes(){
-        String[] attributes= new String[3];
-        attributes[0]=title;
-        attributes[1]=description;
-        attributes[2]=priorityLevel+"";
-        return Arrays.copyOf(attributes,attributes.length);
+    public ArrayList<String> getAttributes(){
+        ArrayList<String> attributes=new ArrayList<>();
+        attributes.add(title);
+        attributes.add(description);
+        attributes.add(priorityLevel+"");
+        return attributes;
     }
 
     @Override
@@ -65,5 +61,12 @@ public class Task implements HeapKeyProvider{
         return Long.toString(key);
     }
 
-
+    @Override
+    public String toString() {
+        return "Task{" +
+                "title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", priorityLevel=" + priorityLevel +
+                '}';
+    }
 }

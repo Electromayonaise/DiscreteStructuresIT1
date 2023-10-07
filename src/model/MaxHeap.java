@@ -22,6 +22,9 @@ public class MaxHeap<T extends HeapKeyProvider > implements PriorityQueue<T> {
         }
 
     }
+    public ArrayList<T> getElements(){
+        return list;
+    }
 
     public boolean modifyKey(int i,int newKey){
         return (increaseKey(i,newKey)||decreaseKey(i,newKey));
@@ -147,6 +150,16 @@ public class MaxHeap<T extends HeapKeyProvider > implements PriorityQueue<T> {
         T element2 = list.get(j);
         list.set(j, element1);
         list.set(i, element2);
+    }
+    public boolean remove(int i){
+        boolean flag=false;
+        if(list.remove(i)){
+            size--;
+            flag=true;
+            buildMaxHeap();
+
+        }
+        return flag;
     }
 
 

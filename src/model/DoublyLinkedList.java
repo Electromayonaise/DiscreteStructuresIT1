@@ -94,6 +94,8 @@ public class DoublyLinkedList <T> implements Queue<T>, Stack<T>, Iterable<T>{
 
 
 
+
+
     public <U>T getFirstInstance(U object,BiPredicate<T,U> equals ){
         T value=null;
         Node<T> node= getFirstNodeWithInstance(object,equals);

@@ -61,6 +61,15 @@ public class ArrayList<T> {
         }
         return flag;
     }
+    @Override
+    public String toString(){
+        String str="";
+        for (int i = 0; i < size; i++) {
+            str += (elements[i] ).toString();
+            str+=" ";
+        }
+        return str;
+    }
 
 
 }

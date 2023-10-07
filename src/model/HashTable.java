@@ -73,6 +73,9 @@ public class HashTable<T,U > {
         }
         return value;
     }
+    public boolean containsKey(T key){
+        return get(key)!=null;
+    }
 
     public int size(){
         return size;

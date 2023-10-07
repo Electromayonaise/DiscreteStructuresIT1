@@ -22,7 +22,6 @@ public class Main {
         TasksPanel tasksPanel = new TasksPanel(containerPanel);
         containerPanel.add(tasksPanel, "TasksPanel");
 
-
         frame.getContentPane().add(containerPanel);
         frame.setVisible(true);
     }

@@ -4,19 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="64c51c70-6c82-4124-93c4-d8911f3814b8" name="Changes" comment="">
+    <list default="true" id="c8e84ba1-edba-48c2-a132-cc16120936e1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/DiscreteStructuresIT1.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib__2_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DiscreteStructuresIT1/ui/BasePanel$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DiscreteStructuresIT1.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/DiscreteStructuresIT1/ui/BasePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DiscreteStructuresIT1/ui/BasePanel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/DiscreteStructuresIT1/ui/GeneralMenuPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DiscreteStructuresIT1/ui/GeneralMenuPanel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/DiscreteStructuresIT1/ui/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DiscreteStructuresIT1/ui/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DiscreteStructuresIT1/ui/TasksPanel$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DiscreteStructuresIT1/ui/TasksPanel$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DiscreteStructuresIT1/ui/TasksPanel$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DiscreteStructuresIT1/ui/TasksPanel$4.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/DiscreteStructuresIT1/ui/TasksPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DiscreteStructuresIT1/ui/TasksPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/BasePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/BasePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/GeneralMenuPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/GeneralMenuPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/ArrayList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ArrayList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/ControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/ControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ui/TasksPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/TasksPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -34,17 +39,23 @@
   "customColor": "",
   "associatedIndex": 4
 }]]></component>
-  <component name="ProjectId" id="2WP3M5L29rpgZo6YW9KchBnmdD6" />
+  <component name="ProjectId" id="2WRj3VDNtpIKHXTk9bHo7laLgg9" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "interface",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Code/Repositories/DiscreteStructuresIT1/lib",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -52,15 +63,20 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Code\Repositories\DiscreteStructuresIT1\lib" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="64c51c70-6c82-4124-93c4-d8911f3814b8" name="Changes" comment="" />
-      <created>1696620337932</created>
+      <changelist id="c8e84ba1-edba-48c2-a132-cc16120936e1" name="Changes" comment="" />
+      <created>1696702088439</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1696620337932</updated>
-      <workItem from="1696620341939" duration="4991000" />
+      <updated>1696702088439</updated>
+      <workItem from="1696702090638" duration="10372000" />
     </task>
     <servers />
   </component>

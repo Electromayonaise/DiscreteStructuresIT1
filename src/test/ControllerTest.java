@@ -1,9 +1,10 @@
+package test;
+
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import model.Controller;
 
 import model.ArrayList;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class ControllerTest {
     private Controller controller;
@@ -17,14 +18,14 @@ public class ControllerTest {
     void setUp2ControllerWithTasks(){
         setUp1EmptyController();
         for (int i = 0; i < NUM; i++) {
-            assertTrue(controller.addTask("nonPrioritizedTask"+i,"description"+i,0));
-            assertFalse(controller.addTask("nonPrioritizedTask"+i,"description"+i,0));
-            assertFalse(controller.addTask("nonPrioritizedTask"+i,"description"+i,0));
+            Assertions.assertTrue(controller.addTask("nonPrioritizedTask"+i,"description"+i,0));
+            Assertions.assertFalse(controller.addTask("nonPrioritizedTask"+i,"description"+i,0));
+            Assertions.assertFalse(controller.addTask("nonPrioritizedTask"+i,"description"+i,0));
         }
         for (int i = 0; i < NUM; i++) {
-            assertTrue(controller.addTask("prioritizedTask"+i,"description"+i,i));
-            assertFalse(controller.addTask("prioritizedTask"+i,"description"+i,i));
-            assertFalse(controller.addTask("prioritizedTask"+i,"description"+i,i));
+            Assertions.assertTrue(controller.addTask("prioritizedTask"+i,"description"+i,i));
+            Assertions.assertFalse(controller.addTask("prioritizedTask"+i,"description"+i,i));
+            Assertions.assertFalse(controller.addTask("prioritizedTask"+i,"description"+i,i));
         }
     }
     @Test
@@ -32,14 +33,14 @@ public class ControllerTest {
         setUp1EmptyController();
 
         for (int i = 0; i < NUM; i++) {
-            assertTrue(controller.addTask("nonPrioritizedTask"+i,"description"+i,0));
-            assertFalse(controller.addTask("nonPrioritizedTask"+i,"description"+i,0));
-            assertFalse(controller.addTask("nonPrioritizedTask"+i,"description"+i,0));
+            Assertions.assertTrue(controller.addTask("nonPrioritizedTask"+i,"description"+i,0));
+            Assertions.assertFalse(controller.addTask("nonPrioritizedTask"+i,"description"+i,0));
+            Assertions.assertFalse(controller.addTask("nonPrioritizedTask"+i,"description"+i,0));
         }
         for (int i = 0; i < NUM; i++) {
-            assertTrue(controller.addTask("prioritizedTask"+i,"description"+i,i));
-            assertFalse(controller.addTask("prioritizedTask"+i,"description"+i,i));
-            assertFalse(controller.addTask("prioritizedTask"+i,"description"+i,i));
+            Assertions.assertTrue(controller.addTask("prioritizedTask"+i,"description"+i,i));
+            Assertions.assertFalse(controller.addTask("prioritizedTask"+i,"description"+i,i));
+            Assertions.assertFalse(controller.addTask("prioritizedTask"+i,"description"+i,i));
         }
         System.out.println("A");
         ArrayList<ArrayList<String>> prioritizedTasks=controller.getPrioritizedTasksAttributes();
@@ -54,9 +55,9 @@ public class ControllerTest {
     void removeTasks(){
         setUp2ControllerWithTasks();
         for (int i = 0; i < NUM; i++) {
-            assertTrue(controller.removeTask("nonPrioritizedTask"+i));
-            assertFalse(controller.removeTask("nonPrioritizedTask"+i));
-            assertFalse(controller.removeTask("nonPrioritizedTask"+i));
+            Assertions.assertTrue(controller.removeTask("nonPrioritizedTask"+i));
+            Assertions.assertFalse(controller.removeTask("nonPrioritizedTask"+i));
+            Assertions.assertFalse(controller.removeTask("nonPrioritizedTask"+i));
 
         }
         ArrayList<ArrayList<String>> prioritizedTasks=controller.getPrioritizedTasksAttributes();
@@ -65,9 +66,9 @@ public class ControllerTest {
         System.out.println(prioritizedTasks+"");
         System.out.println(nonPrioritizedTasks);
         for (int i = 0; i < NUM; i++) {
-            assertTrue(controller.removeTask("prioritizedTask"+i));
-            assertFalse(controller.removeTask("prioritizedTask"+i));
-            assertFalse(controller.removeTask("prioritizedTask"+i));
+            Assertions.assertTrue(controller.removeTask("prioritizedTask"+i));
+            Assertions.assertFalse(controller.removeTask("prioritizedTask"+i));
+            Assertions.assertFalse(controller.removeTask("prioritizedTask"+i));
 
         }
 
@@ -76,9 +77,9 @@ public class ControllerTest {
 
     void modifyTaskDescription(){
         setUp2ControllerWithTasks();
-        assertTrue(controller.modifyTask("prioritizedTask1",2,"asasa"));
-        assertTrue(controller.modifyTask("nonPrioritizedTask0",2,"asasa"));
-        assertTrue(controller.modifyTask("nonPrioritizedTask0",2,"esassa"));
+        Assertions.assertTrue(controller.modifyTask("prioritizedTask1",2,"asasa"));
+        Assertions.assertTrue(controller.modifyTask("nonPrioritizedTask0",2,"asasa"));
+        Assertions.assertTrue(controller.modifyTask("nonPrioritizedTask0",2,"esassa"));
         printTasks();
     }
 
@@ -86,17 +87,17 @@ public class ControllerTest {
     void modifyPriorityLevelOfTask(){
         setUp2ControllerWithTasks();
         //change status->decrease priority-> increase priority
-        assertTrue(controller.modifyTask("nonPrioritizedTask0",3,"1000"));
+        Assertions.assertTrue(controller.modifyTask("nonPrioritizedTask0",3,"1000"));
         printTasks();
-        assertTrue(controller.modifyTask("nonPrioritizedTask0",3,"0"));
+        Assertions.assertTrue(controller.modifyTask("nonPrioritizedTask0",3,"0"));
         printTasks();
-        assertTrue(controller.modifyTask("nonPrioritizedTask0",3,"10000"));
-        printTasks();
-        System.out.println("     ");
-        assertTrue(controller.modifyTask("nonPrioritizedTask0",3,"1"));
+        Assertions.assertTrue(controller.modifyTask("nonPrioritizedTask0",3,"10000"));
         printTasks();
         System.out.println("     ");
-        assertTrue(controller.modifyTask("prioritizedTask49",3,"1"));
+        Assertions.assertTrue(controller.modifyTask("nonPrioritizedTask0",3,"1"));
+        printTasks();
+        System.out.println("     ");
+        Assertions.assertTrue(controller.modifyTask("prioritizedTask49",3,"1"));
         System.out.println("     ");
         printTasks();
     }
@@ -105,14 +106,14 @@ public class ControllerTest {
     void modifyTaskTitle(){
         setUp2ControllerWithTasks();
         //It must be possible to modify the task's title of an added Task
-        assertTrue(controller.modifyTask("nonPrioritizedTask0",1,"a"));
+        Assertions.assertTrue(controller.modifyTask("nonPrioritizedTask0",1,"a"));
         //Now there is no a task with title nonPrioritizedTask0. So modifyTask should be false
-        assertFalse(controller.modifyTask("nonPrioritizedTask0",1,"a"));
+        Assertions.assertFalse(controller.modifyTask("nonPrioritizedTask0",1,"a"));
         //It is not possible to use a title that other task has.
-        assertFalse(controller.modifyTask("nonPrioritizedTask3", 1, "a"));
+        Assertions.assertFalse(controller.modifyTask("nonPrioritizedTask3", 1, "a"));
 
-        assertFalse(controller.modifyTask("notAddedTask",1,"aasas"));
-        assertTrue(controller.modifyTask("prioritizedTask30",1,"test"));
+        Assertions.assertFalse(controller.modifyTask("notAddedTask",1,"aasas"));
+        Assertions.assertTrue(controller.modifyTask("prioritizedTask30",1,"test"));
         printTasks();
 
     }

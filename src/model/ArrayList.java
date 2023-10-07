@@ -1,6 +1,8 @@
 package model;
+import java.util.Iterator;
+import java.util.function.Consumer;
 
-public class ArrayList<T> {
+public class ArrayList<T> implements Iterable<T>{
 
     private T[] elements;
     private int size;
@@ -17,7 +19,6 @@ public class ArrayList<T> {
             flag=true;
         }
         return flag;
-
     }
 
     public void add(T element) {
@@ -47,17 +48,17 @@ public class ArrayList<T> {
 
 
     }
-    public boolean remove(int i){
-        boolean flag=false;
-        if(i>=0 && i<size) {
+    public boolean remove(int i) {
+        boolean flag = false;
+        if (i >= 0 && i < size) { // Check if i is within the valid range
             int j = i + 1;
             while (j < size) {
-                elements[j-1] = elements[j ];
+                elements[j - 1] = elements[j];
                 j++;
             }
-            elements[size] = null;
+            elements[size - 1] = null; // Set the last element to null
             size--;
-            flag=true;
+            flag = true;
         }
         return flag;
     }
@@ -71,5 +72,35 @@ public class ArrayList<T> {
         return str;
     }
 
+    public boolean contains(T element){
+        boolean flag=false;
+        for (int i = 0; i < size&&!flag; i++) {
+            if(elements[i].equals(element)){
+                flag=true;
+            }
+        }
+        return flag;
+    }
 
+    @Override
+    public void forEach(Consumer<? super T> action) {
+        Iterable.super.forEach(action);
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new Iterator<T>() {
+            private int currentIndex = 0;
+
+            @Override
+            public boolean hasNext() {
+                return currentIndex < size;
+            }
+
+            @Override
+            public T next() {
+                return elements[currentIndex++];
+            }
+        };
+    }
 }

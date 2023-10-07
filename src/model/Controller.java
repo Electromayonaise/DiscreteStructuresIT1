@@ -1,7 +1,11 @@
 package model;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 public class Controller {
     private static final Controller instance=new Controller();
     private HashTable<String,Task> table;
@@ -134,14 +138,98 @@ public class Controller {
             table.add(newTask.getTitle(), newTask);
             if(priorityLevel>0){
                 priorityQueue.insert(newTask);
+                saveChangesToPrioJson();
             }else{
                 queue.enqueue(newTask);
+                saveChangesToNonPrioJson();
             }
             flag=true;
 
         }
         return flag;
 
+    }
+
+    public void saveChangesToPrioJson() {
+        ArrayList<ArrayList<String>> prioritizedTasks = getPrioritizedTasksAttributes();
+        String filePath = "src/data/prioritizedTasks.json";
+
+        // Check if the directory exists, create it if not
+        File directory = new File("src/data");
+        if (!directory.exists()) {
+            directory.mkdirs();
+        }
+
+        try {
+            File file = new File(filePath);
+
+            // Check if the file exists, create it if not
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+
+            FileWriter fileWriter = new FileWriter(file);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            bufferedWriter.write("[");
+            for (int i = 0; i < prioritizedTasks.size(); i++) {
+                bufferedWriter.write("[");
+                for (int j = 0; j < prioritizedTasks.get(i).size(); j++) {
+                    bufferedWriter.write("\"" + prioritizedTasks.get(i).get(j) + "\"");
+                    if (j < prioritizedTasks.get(i).size() - 1) {
+                        bufferedWriter.write(",");
+                    }
+                }
+                bufferedWriter.write("]");
+                if (i < prioritizedTasks.size() - 1) {
+                    bufferedWriter.write(",");
+                }
+            }
+            bufferedWriter.write("]");
+            bufferedWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void saveChangesToNonPrioJson() {
+        ArrayList<ArrayList<String>> nonPrioritizedTasks = getNonPrioritizedTasksAttributes();
+        String filePath = "src/data/nonPrioritizedTasks.json";
+
+        // Check if the directory exists, create it if not
+        File directory = new File("src/data");
+        if (!directory.exists()) {
+            directory.mkdirs();
+        }
+
+        try {
+            File file = new File(filePath);
+
+            // Check if the file exists, create it if not
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+
+            FileWriter fileWriter = new FileWriter(file);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            bufferedWriter.write("[");
+            for (int i = 0; i < nonPrioritizedTasks.size(); i++) {
+                bufferedWriter.write("[");
+                for (int j = 0; j < nonPrioritizedTasks.get(i).size(); j++) {
+                    bufferedWriter.write("\"" + nonPrioritizedTasks.get(i).get(j) + "\"");
+                    if (j < nonPrioritizedTasks.get(i).size() - 1) {
+                        bufferedWriter.write(",");
+                    }
+                }
+                bufferedWriter.write("]");
+                if (i < nonPrioritizedTasks.size() - 1) {
+                    bufferedWriter.write(",");
+                }
+            }
+            bufferedWriter.write("]");
+            bufferedWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -182,6 +270,8 @@ public class Controller {
        return ((DoublyLinkedList<Task>) queue).removeFirstInstance(title,equals);
 
    }
+
+
 
 
 

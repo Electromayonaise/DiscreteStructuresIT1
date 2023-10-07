@@ -39,7 +39,7 @@ public class Controller {
         }
         return flag;
     }
-    public boolean modifyTaskPriority(String title, int newPriority){
+    private boolean modifyTaskPriority(String title, int newPriority){
         boolean flag=false;
         Task task= table.get(title);
         int prevPriority=task.getPriorityLevel();
@@ -47,12 +47,12 @@ public class Controller {
         if(prevPriority==0 &&newPriority>0){
             removeFromQueue(title);
             task.setPriorityLevel(newPriority);
-            addTask(task);
+            priorityQueue.insert(task);
             flag=true;
         }else if(prevPriority>0 &&newPriority==0){
             removeFromHeap(title);
             task.setPriorityLevel(newPriority);
-            addTask(task);
+            queue.enqueue(task);
             flag=true;
         }else if(prevPriority>0&&newPriority>0&&prevPriority!=newPriority){
             ArrayList<Task> heapTasks=((MaxHeap<Task>) priorityQueue).getElements();
@@ -71,7 +71,7 @@ public class Controller {
 
     }
 
-    public boolean modifyTaskTitle(String title,String newTitle){
+    private boolean modifyTaskTitle(String title,String newTitle){
         boolean flag=false;
         Task task=table.get(title);
         table.remove(title);
@@ -83,12 +83,8 @@ public class Controller {
         return flag;
 
     }
-    public void modifyTaskDescription(String title){
 
-    }
-    public void modifyTask(String title,int option,int newValue){
 
-    }
     public boolean removeTask(String title){
         boolean flag=false;
         if(table.containsKey(title)){
@@ -147,22 +143,7 @@ public class Controller {
         return flag;
 
     }
-    public boolean addTask(Task newTask){
-        boolean flag=false;
-        /* title was added before */
-        if(!table.containsKey(newTask.getTitle())){
-            table.add(newTask.getTitle(), newTask);
-            if(newTask.getPriorityLevel()>0){
-                priorityQueue.insert(newTask);
-            }else{
-                queue.enqueue(newTask);
-            }
-            flag=true;
 
-        }
-        return flag;
-
-    }
 
 
 

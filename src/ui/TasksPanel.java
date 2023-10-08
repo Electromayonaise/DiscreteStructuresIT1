@@ -2,6 +2,7 @@ package ui;
 
 import javax.swing.*;
 import java.awt.*;
+
 import model.ArrayList;
 import model.Controller;
 
@@ -226,6 +227,17 @@ public class TasksPanel extends BasePanel {
 
         // Add the buttons container to the south
         add(buttonsContainer, BorderLayout.SOUTH);
+
+        // Button to undo the last action
+        JButton undoButton = createStyledButton("Undo", myRed);
+        undoButton.addActionListener(e -> {
+            controller.undo(displayByPriority, 1);
+            refreshDisplay();
+            JOptionPane.showMessageDialog(TasksPanel.this, "Undo successful.", "Success", JOptionPane.INFORMATION_MESSAGE);
+        });
+
+        // Add the undo button to the left column panel
+        leftColumnPanel.add(undoButton, BorderLayout.SOUTH);
     }
 
     private JSlider getjSlider() {

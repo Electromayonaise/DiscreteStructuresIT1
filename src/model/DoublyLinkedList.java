@@ -138,25 +138,33 @@ public class DoublyLinkedList <T> implements Queue<T>, Stack<T>, Iterable<T>{
     }
     private class MyIterator implements Iterator<T> {
         private Node<T> currentNode;
+        int currentIndex;
         MyIterator(){
-            currentNode =head;
+            currentIndex=-1;
+
         }
         @Override
         public boolean hasNext() {
-            return currentNode !=null&& currentNode.getNext()!=null;
+            return currentIndex<size-1;
         }
         @Override
         public T next() {
             if (hasNext()) {
-                T valueToReturn=currentNode.getValue();
-                currentNode = currentNode.getNext();
+                T valueToReturn;
+                if(currentIndex==-1){
+                    valueToReturn=head.getValue();
+                    currentNode=head;
+                }else{
+                    valueToReturn=currentNode.getNext().getValue();
+                    currentNode=currentNode.getNext();
+                }
+                currentIndex++;
                 return valueToReturn;
             } else {
                 throw new java.util.NoSuchElementException();
             }
         }
     }
-
 
 
 

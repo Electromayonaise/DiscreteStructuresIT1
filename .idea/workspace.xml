@@ -5,23 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c8e84ba1-edba-48c2-a132-cc16120936e1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/DiscreteStructuresIT1.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib__2_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/json_simple_1_1_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/DiscreteStructuresIT1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/DiscreteStructuresIT1.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DiscreteStructuresIT1.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DiscreteStructuresIT1/ui/BasePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DiscreteStructuresIT1/ui/BasePanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DiscreteStructuresIT1/ui/GeneralMenuPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DiscreteStructuresIT1/ui/GeneralMenuPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DiscreteStructuresIT1/ui/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DiscreteStructuresIT1/ui/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/DiscreteStructuresIT1/ui/TasksPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DiscreteStructuresIT1/ui/TasksPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/ArrayList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ArrayList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/nonPrioritizedTasks.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/prioritizedTasks.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/prioritizedTasks.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/ControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/ControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/DoublyLinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/DoublyLinkedList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ui/TasksPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/TasksPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -76,7 +67,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1696702088439</updated>
-      <workItem from="1696702090638" duration="10372000" />
+      <workItem from="1696702090638" duration="20885000" />
     </task>
     <servers />
   </component>

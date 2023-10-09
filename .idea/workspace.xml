@@ -7,18 +7,24 @@
     <list default="true" id="c8e84ba1-edba-48c2-a132-cc16120936e1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/nonPrioritizedTasks.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/prioritizedTasks.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/prioritizedTasks_backup1.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/prioritizedTasks_backup2.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/prioritizedTasks_backup3.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/DoublyLinkedListTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/DoublyLinkedListTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/HashTableTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/HashTableTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/MaxHeapTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/MaxHeapTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/QueueTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/QueueTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/StackTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/StackTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/TasksPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/TasksPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -69,6 +75,7 @@
       <updated>1696702088439</updated>
       <workItem from="1696702090638" duration="22344000" />
       <workItem from="1696805658892" duration="1878000" />
+      <workItem from="1696881914341" duration="1264000" />
     </task>
     <servers />
   </component>

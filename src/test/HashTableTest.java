@@ -1,3 +1,5 @@
+package test;
+
 import model.HashTable;
 
 import model.Task;

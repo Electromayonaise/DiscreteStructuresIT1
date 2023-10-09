@@ -5,14 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c8e84ba1-edba-48c2-a132-cc16120936e1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/json_simple_1_1_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/DiscreteStructuresIT1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/DiscreteStructuresIT1.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DiscreteStructuresIT1/ui/TasksPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DiscreteStructuresIT1/ui/TasksPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/nonPrioritizedTasks.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/prioritizedTasks.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/prioritizedTasks.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/DoublyLinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/DoublyLinkedList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/DoublyLinkedListTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/DoublyLinkedListTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/HashTableTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/HashTableTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/MaxHeapTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/MaxHeapTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/QueueTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/QueueTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/StackTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/StackTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ui/TasksPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/TasksPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -26,34 +26,34 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 4
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="2WRj3VDNtpIKHXTk9bHo7laLgg9" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Code/Repositories/DiscreteStructuresIT1/lib",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Code/Repositories/DiscreteStructuresIT1/lib&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Code\Repositories\DiscreteStructuresIT1\lib" />
@@ -67,7 +67,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1696702088439</updated>
-      <workItem from="1696702090638" duration="20885000" />
+      <workItem from="1696702090638" duration="22344000" />
+      <workItem from="1696805658892" duration="1878000" />
     </task>
     <servers />
   </component>

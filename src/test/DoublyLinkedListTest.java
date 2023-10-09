@@ -1,3 +1,5 @@
+package test;
+
 import model.DoublyLinkedList;
 import model.BiPredicate;
 import org.junit.jupiter.api.Test;

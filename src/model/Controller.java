@@ -1,12 +1,12 @@
 package model;
-import java.io.BufferedReader;
+/*import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.nio.file.Files;
+import java.nio.file.Files; */
 
 public class Controller {
     private static final Controller instance=new Controller();
@@ -71,8 +71,8 @@ public class Controller {
                 }
             }
         }
-        saveChangesToPrioJson();
-        saveChangesToNonPrioJson();
+        //saveChangesToPrioJson();
+        //saveChangesToNonPrioJson();
 
         return flag;
 
@@ -88,8 +88,8 @@ public class Controller {
             table.add(task.getTitle(),task);
             flag=true;
         }
-        saveChangesToPrioJson();
-        saveChangesToNonPrioJson();
+        //saveChangesToPrioJson();
+        //saveChangesToNonPrioJson();
 
         return flag;
 
@@ -107,14 +107,14 @@ public class Controller {
             }
             table.remove(title);
         }
-        saveChangesToPrioJson();
-        saveChangesToNonPrioJson();
+        //saveChangesToPrioJson();
+        //saveChangesToNonPrioJson();
         return flag;
 
     }
 
     public ArrayList<ArrayList<String>> getNonPrioritizedTasksAttributes(){
-        loadNonPrioritizedTasks(null);
+        //loadNonPrioritizedTasks(null);
         ArrayList<ArrayList<String>> list=new ArrayList<>();
         for(Task task: (DoublyLinkedList<Task>) queue){
             list.add(task.getAttributes());
@@ -123,7 +123,7 @@ public class Controller {
     }
     public ArrayList<ArrayList<String>> getPrioritizedTasksAttributes(){
 
-        loadPrioritizedTasks(null);
+        //loadPrioritizedTasks(null);
 
         ArrayList<ArrayList<String>> list=new ArrayList<>();
         ArrayList<Task> heapList=((MaxHeap<Task>)priorityQueue).getElements();
@@ -149,10 +149,10 @@ public class Controller {
             table.add(newTask.getTitle(), newTask);
             if(priorityLevel>0){
                 priorityQueue.insert(newTask);
-                saveChangesToPrioJson();
+                //saveChangesToPrioJson();
             }else{
                 queue.enqueue(newTask);
-                saveChangesToNonPrioJson();
+                //saveChangesToNonPrioJson();
             }
             flag=true;
 
@@ -160,6 +160,7 @@ public class Controller {
         return flag;
 
     }
+    /*
 
     public void saveChangesToPrioJson() {
         ArrayList<ArrayList<String>> prioritizedTasks = getPrioritizedTasksAttributes();
@@ -388,7 +389,7 @@ public class Controller {
     public void undoChangeNonPrio(int steps) {
         String filePath = "src/data/nonPrioritizedTasks_backup"+steps+".json";
         loadNonPrioritizedTasks(filePath);
-    }
+    } */
 
 
 

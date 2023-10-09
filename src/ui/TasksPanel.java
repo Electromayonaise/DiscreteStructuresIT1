@@ -231,9 +231,10 @@ public class TasksPanel extends BasePanel {
         // Button to undo the last action
         JButton undoButton = createStyledButton("Undo", myRed);
         undoButton.addActionListener(e -> {
-            controller.undo(displayByPriority, 1);
+            JOptionPane.showMessageDialog(TasksPanel.this, "Undo is not implemented yet.", "Error", JOptionPane.ERROR_MESSAGE);
+            /**controller.undo(displayByPriority, 1);
             refreshDisplay();
-            JOptionPane.showMessageDialog(TasksPanel.this, "Undo successful.", "Success", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(TasksPanel.this, "Undo successful.", "Success", JOptionPane.INFORMATION_MESSAGE); */
         });
 
         // Add the undo button to the left column panel
@@ -306,4 +307,5 @@ public class TasksPanel extends BasePanel {
             }
         }
     }
+
 }

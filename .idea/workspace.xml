@@ -5,12 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c8e84ba1-edba-48c2-a132-cc16120936e1" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/DiscreteStructuresIT1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/DiscreteStructuresIT1.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DiscreteStructuresIT1/ui/BasePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DiscreteStructuresIT1/ui/GeneralMenuPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DiscreteStructuresIT1/ui/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DiscreteStructuresIT1/ui/TasksPanel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/controller.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/DoublyLinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/DoublyLinkedList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/FileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/FileManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Task.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +51,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Code/Repositories/DiscreteStructuresIT1/lib",
+    "last_opened_file_path": "C:/Users/Aleja/OneDrive/Desktop/DiscreteStructuresIT1",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -77,6 +78,8 @@
       <workItem from="1696702090638" duration="22344000" />
       <workItem from="1696805658892" duration="1878000" />
       <workItem from="1696881914341" duration="1264000" />
+      <workItem from="1696974733920" duration="38000" />
+      <workItem from="1696974780737" duration="4333000" />
     </task>
     <servers />
   </component>

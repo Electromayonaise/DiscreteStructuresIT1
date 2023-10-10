@@ -1,7 +1,5 @@
 package model;
 
-
-
 public class Task implements HeapKeyProvider{
     private String title;
     private String description;

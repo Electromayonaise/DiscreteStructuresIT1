@@ -12,6 +12,17 @@ public class DoublyLinkedList <T> implements Queue<T>, Stack<T>, Iterable<T>{
         size=0;
     }
 
+    public Object[] toArray() {
+        Object[] array = new Object[size];
+        int index = 0;
+        for (T value : this) {
+            array[index] = value;
+            index++;
+        }
+        return array;
+    }
+
+
     public void addLast(T newValue){
         Node <T>newNode=new Node<>(newValue);
         if(head==null){

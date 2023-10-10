@@ -45,10 +45,10 @@ public class Controller {
                     flag=modifyTaskPriority(title,Integer.parseInt(  newValue));
                     break;
                 default:
-
-
             }
+
         }
+        saveData();
         return flag;
     }
     private boolean modifyTaskPriority(String title, int newPriority){
@@ -78,9 +78,8 @@ public class Controller {
         }
 
 
+
         return flag;
-
-
     }
 
     private boolean modifyTaskTitle(String title,String newTitle){
@@ -95,7 +94,6 @@ public class Controller {
 
 
         return flag;
-
     }
 
     public boolean removeTask(String title){
@@ -109,7 +107,11 @@ public class Controller {
                 flag=removeFromQueue(title);
             }
             table.remove(title);
+
+
         }
+
+        saveData();
 
         return flag;
 
@@ -124,9 +126,6 @@ public class Controller {
         return list;
     }
     public ArrayList<ArrayList<String>> getPrioritizedTasksAttributes(){
-
-
-
         ArrayList<ArrayList<String>> list=new ArrayList<>();
         ArrayList<Task> heapList=((MaxHeap<Task>)priorityQueue).getElements();
         ArrayList<Task> copy=  copyTasks(heapList);
@@ -136,32 +135,39 @@ public class Controller {
             list.add(copy.get(i).getAttributes());
 
         }
-
         return list;
+    }
+
+    public void saveData(){
+        try {
+            fileManager.saveMaxHeapToJSON(priorityQueue);
+        } catch (IOException e) {
+            System.out.println("Error al guardar");
+            throw new RuntimeException(e);
+        }
+
+        try {
+            fileManager.saveDoublyLinkedListToJSON(queue);
+        } catch (IOException e) {
+            System.out.println("Error al guardar");
+            throw new RuntimeException(e);
+        }
     }
 
     public boolean addTask(String title,String description, int priorityLevel){
         boolean flag=false;
-
-
-
 
         if(!table.containsKey(title)){
             Task newTask=new Task(title,description,priorityLevel);
             table.add(newTask.getTitle(), newTask);
             if(priorityLevel>0){
                 priorityQueue.insert(newTask);
-
+                saveData();
             }else{
                 queue.enqueue(newTask);
+                saveData();
+            }
 
-            }
-            try {
-                fileManager.saveToJson(instance);
-            } catch (IOException e) {
-                System.out.println("Error al guardar");
-                throw new RuntimeException(e);
-            }
 
             flag=true;
 
@@ -208,4 +214,18 @@ public class Controller {
 
     }
 
+
+    public void setTable(HashTable<String, Task> table) {
+        this.table = table;
+    }
+
+
+    public void setQueue(DoublyLinkedList<Task> queue) {
+        this.queue = queue;
+    }
+
+
+    public void setPriorityQueue(MaxHeap<Task> priorityQueue) {
+        this.priorityQueue = priorityQueue;
+    }
 }

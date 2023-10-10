@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 
 
 import java.io.*;
+import java.util.Arrays;
 
 
 public class FileManager {
@@ -12,16 +13,21 @@ public class FileManager {
 
     private File dataFolder;
 
-    private File jsonFile;
+    private File doublyFile;
+
+    private File maxheapFile;
 
     private FileManager(){
         // la ruta absoluta del proyecto
         File projectDir = new File(System.getProperty("user.dir"));
         dataFolder = new File(projectDir+"/data");
-        jsonFile = new File(dataFolder+"/controller.json");
+        doublyFile = new File(dataFolder+"/doubly.json");
+        maxheapFile = new File(dataFolder+"/maxheap.json");
+
     }
 
     public static FileManager getInstance(){
+
         if(instance == null){
             instance = new FileManager();
         }
@@ -31,51 +37,106 @@ public class FileManager {
     private void createResources() throws IOException {
         if(!dataFolder.exists()){
             dataFolder.mkdir();
-            if (!jsonFile.exists()){
-                jsonFile.createNewFile();
+        }
+
+        if(!doublyFile.exists()){
+            doublyFile.createNewFile();
+        }
+        if(!maxheapFile.exists()){
+            maxheapFile.createNewFile();
+        }
+    }
+
+    public Controller loadToJson() throws IOException {
+
+        createResources();
+
+        // Cargar la queue y el maxheap
+            DoublyLinkedList<Task> loadedQueue = loadDoublyLinkedListFromJSON(Task[].class);
+            MaxHeap<Task> loadedHeap = loadMaxHeapFromJSON();
+
+            // Crea un nuevo Controller
+            Controller loadedController = new Controller();
+
+            // Agrega la DoublyLinkedList y la MaxHeap al nuevo Controller
+            loadedController.setQueue(loadedQueue);
+            loadedController.setPriorityQueue(loadedHeap);
+
+            // Agrega los elementos de la DoublyLinkedList a la HashTable
+            HashTable<String,Task> loadedTable = new HashTable<>();
+
+            for (Task task : loadedQueue) {
+                loadedTable.add(task.getTitle(), task);
+            }
+
+            // Agrega los elementos de la MaxHeap a la HashTable
+            for (Task task : loadedHeap.getElements()) {
+                loadedTable.add(task.getTitle(), task);
+            }
+
+            // Agrega la HashTable al nuevo Controller
+        loadedController.setTable(loadedTable);
+
+            return loadedController;
+    }
+
+
+    public void saveDoublyLinkedListToJSON(DoublyLinkedList<?> list) throws IOException {
+        createResources();
+
+        Gson gson = new Gson();
+        try (FileWriter writer = new FileWriter(doublyFile)) {
+            Object[] array = list.toArray();
+            String data = gson.toJson(array);
+            writer.write(data);
+            writer.flush();
+            writer.close();
+        }
+    }
+
+    public <T> DoublyLinkedList<T> loadDoublyLinkedListFromJSON(Class<T[]> elementType) throws IOException {
+        Gson gson = new Gson();
+        try (FileReader reader = new FileReader(doublyFile)) {
+            T[] array = gson.fromJson(reader, elementType);
+            DoublyLinkedList<T> newList = new DoublyLinkedList<>();
+            if(array != null) {
+                for (T value : array) {
+                    newList.addLast(value);
+                }
+            }
+            return newList;
+        }
+    }
+
+
+    public void saveMaxHeapToJSON(MaxHeap<?> maxHeap) throws IOException {
+        createResources();
+
+        Gson gson = new Gson();
+
+        try (FileWriter writer = new FileWriter(maxheapFile)) {
+            // Convertir cada elemento individualmente a JSON
+            for (Object element : maxHeap.getElements()) {
+                String data = gson.toJson(element);
+                writer.write(data + "\n");
             }
         }
     }
 
-    public void saveToJson(Controller controller) throws IOException {
-        // crear los recursos --> archivos y carpetas
-        createResources();
-
-        // Serializador de la información --> https://mvnrepository.com/artifact/com.google.code.gson/gson/2.10.1
+    public MaxHeap<Task> loadMaxHeapFromJSON() throws IOException {
         Gson gson = new Gson();
 
-        // result --> funte de la información (archivo)
-        // FileOutputStream --> Enlazador de la información --> conectar el lenguaje (java) con la fuente de la información
-        FileOutputStream fos = new FileOutputStream(jsonFile); // FileNotFountException
+        MaxHeap<Task> loadedHeap = new MaxHeap<>();
 
-        // fuente de la información
-        // Definir el formato con el que se guarda la información
-        String data = gson.toJson(controller);
-
-        // OutputStreamWriter --> empaquetador de la información --> preparar el recurso donde queremos escribir
-        // BufferedWriter --> escritor de la información
-        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(fos));
-        writer.write(data); // IOException
-        writer.flush();
-        writer.close();
-    }
-
-    public Controller loadToJson() throws IOException {
-        Gson gson = new Gson();
-        FileInputStream fis = new FileInputStream(jsonFile);
-        BufferedReader reader = new BufferedReader(new InputStreamReader(fis));
-
-        String content = "";
-        String line = "";
-        while ( (line = reader.readLine()) != null){
-            content += line;
+        try (BufferedReader reader = new BufferedReader(new FileReader(maxheapFile))) {
+            String jsonLine;
+            while ((jsonLine = reader.readLine()) != null) {
+                Task task = gson.fromJson(jsonLine, Task.class);
+                loadedHeap.insert(task);
+            }
         }
-        reader.close();
-        Controller aux=new Controller();
-        return gson.fromJson(content, aux.getClass());
 
-
+        return loadedHeap;
     }
-
 
 }

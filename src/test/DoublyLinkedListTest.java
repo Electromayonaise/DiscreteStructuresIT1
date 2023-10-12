@@ -7,6 +7,9 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Unit tests for the DoublyLinkedList class.
+ */
 public class DoublyLinkedListTest {
     private DoublyLinkedList<Integer> list;
     private final int NUM_ELEMENTS =40;

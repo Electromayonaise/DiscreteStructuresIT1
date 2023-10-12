@@ -3,16 +3,27 @@ package ui;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * A base panel for other panels in the Swing application.
+ */
 public class BasePanel extends JPanel {
 
     protected JPanel containerPanel;
     protected JButton returnButton; // Declare the button at the class level
 
+    /**
+     * Constructs a BasePanel.
+     *
+     * @param containerPanel the container panel for managing card layout
+     */
     public BasePanel(JPanel containerPanel) {
         this.containerPanel = containerPanel;
         initUI();
     }
 
+    /**
+     * Initializes the user interface components.
+     */
     private void initUI() {
         setLayout(new GridBagLayout()); // Use GridBagLayout for better element placement
         setOpaque(false); // Make the panel transparent
@@ -32,7 +43,13 @@ public class BasePanel extends JPanel {
         add(returnButton, gbc);
     }
 
-    // Helper method to create styled buttons
+    /**
+     * Helper method to create styled buttons.
+     *
+     * @param text   the text to be displayed on the button
+     * @param bgColor the background color of the button
+     * @return the styled JButton
+     */
     protected JButton createStyledButton(String text, Color bgColor) {
         JButton button = new JButton(text);
         button.setFont(new Font("Arial", Font.BOLD, 16));
@@ -43,11 +60,12 @@ public class BasePanel extends JPanel {
         return button;
     }
 
-    // Allow other classes to access the returnButton
+    /**
+     * Allow other classes to access the returnButton.
+     *
+     * @return the returnButton
+     */
     public JButton getReturnButton() {
         return returnButton;
     }
 }
-
-
-

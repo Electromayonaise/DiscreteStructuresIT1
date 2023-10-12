@@ -7,7 +7,9 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-
+/**
+ * Unit tests for the HashTable class.
+ */
 public class HashTableTest {
     private HashTable<String, Task> table;
     private final int NUM_ELEMENTS=1000;

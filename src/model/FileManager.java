@@ -2,11 +2,11 @@ package model;
 
 import com.google.gson.Gson;
 
-
 import java.io.*;
-import java.util.Arrays;
 
-
+/**
+ * Manages the saving and loading of data to and from JSON files.
+ */
 public class FileManager {
 
     private static FileManager instance;
@@ -17,70 +17,91 @@ public class FileManager {
 
     private File maxheapFile;
 
-    private FileManager(){
-        // la ruta absoluta del proyecto
+    /**
+     * Private constructor to ensure singleton pattern and initialize file paths.
+     */
+    private FileManager() {
+        // Get the absolute path of the project
         File projectDir = new File(System.getProperty("user.dir"));
-        dataFolder = new File(projectDir+"/data");
-        doublyFile = new File(dataFolder+"/doubly.json");
-        maxheapFile = new File(dataFolder+"/maxheap.json");
-
+        dataFolder = new File(projectDir + "/data");
+        doublyFile = new File(dataFolder + "/doubly.json");
+        maxheapFile = new File(dataFolder + "/maxheap.json");
     }
 
-    public static FileManager getInstance(){
-
-        if(instance == null){
+    /**
+     * Gets the singleton instance of the FileManager.
+     *
+     * @return The FileManager instance.
+     */
+    public static FileManager getInstance() {
+        if (instance == null) {
             instance = new FileManager();
         }
         return instance;
     }
 
+    /**
+     * Creates necessary resources (folders and files) if they do not exist.
+     *
+     * @throws IOException If an I/O error occurs.
+     */
     private void createResources() throws IOException {
-        if(!dataFolder.exists()){
+        if (!dataFolder.exists()) {
             dataFolder.mkdir();
         }
 
-        if(!doublyFile.exists()){
+        if (!doublyFile.exists()) {
             doublyFile.createNewFile();
         }
-        if(!maxheapFile.exists()){
+        if (!maxheapFile.exists()) {
             maxheapFile.createNewFile();
         }
     }
 
+    /**
+     * Loads the data from JSON files and constructs a new Controller instance.
+     *
+     * @return The loaded Controller instance.
+     * @throws IOException If an I/O error occurs.
+     */
     public Controller loadToJson() throws IOException {
-
         createResources();
 
-        // Cargar la queue y el maxheap
-            DoublyLinkedList<Task> loadedQueue = loadDoublyLinkedListFromJSON(Task[].class);
-            MaxHeap<Task> loadedHeap = loadMaxHeapFromJSON();
+        // Load the queue and the maxheap
+        DoublyLinkedList<Task> loadedQueue = loadDoublyLinkedListFromJSON(Task[].class);
+        MaxHeap<Task> loadedHeap = loadMaxHeapFromJSON();
 
-            // Crea un nuevo Controller
-            Controller loadedController = new Controller();
+        // Create a new Controller
+        Controller loadedController = new Controller();
 
-            // Agrega la DoublyLinkedList y la MaxHeap al nuevo Controller
-            loadedController.setQueue(loadedQueue);
-            loadedController.setPriorityQueue(loadedHeap);
+        // Add the DoublyLinkedList and the MaxHeap to the new Controller
+        loadedController.setQueue(loadedQueue);
+        loadedController.setPriorityQueue(loadedHeap);
 
-            // Agrega los elementos de la DoublyLinkedList a la HashTable
-            HashTable<String,Task> loadedTable = new HashTable<>();
+        // Add the elements of the DoublyLinkedList to the HashTable
+        HashTable<String, Task> loadedTable = new HashTable<>();
 
-            for (Task task : loadedQueue) {
-                loadedTable.add(task.getTitle(), task);
-            }
+        for (Task task : loadedQueue) {
+            loadedTable.add(task.getTitle(), task);
+        }
 
-            // Agrega los elementos de la MaxHeap a la HashTable
-            for (Task task : loadedHeap.getElements()) {
-                loadedTable.add(task.getTitle(), task);
-            }
+        // Add the elements of the MaxHeap to the HashTable
+        for (Task task : loadedHeap.getElements()) {
+            loadedTable.add(task.getTitle(), task);
+        }
 
-            // Agrega la HashTable al nuevo Controller
+        // Add the HashTable to the new Controller
         loadedController.setTable(loadedTable);
 
-            return loadedController;
+        return loadedController;
     }
 
-
+    /**
+     * Saves a DoublyLinkedList to a JSON file.
+     *
+     * @param list The DoublyLinkedList to be saved.
+     * @throws IOException If an I/O error occurs.
+     */
     public void saveDoublyLinkedListToJSON(DoublyLinkedList<?> list) throws IOException {
         createResources();
 
@@ -94,12 +115,20 @@ public class FileManager {
         }
     }
 
+    /**
+     * Loads a DoublyLinkedList from a JSON file.
+     *
+     * @param elementType The class type of the elements in the DoublyLinkedList.
+     * @param <T>         The type of the elements in the DoublyLinkedList.
+     * @return The loaded DoublyLinkedList.
+     * @throws IOException If an I/O error occurs.
+     */
     public <T> DoublyLinkedList<T> loadDoublyLinkedListFromJSON(Class<T[]> elementType) throws IOException {
         Gson gson = new Gson();
         try (FileReader reader = new FileReader(doublyFile)) {
             T[] array = gson.fromJson(reader, elementType);
             DoublyLinkedList<T> newList = new DoublyLinkedList<>();
-            if(array != null) {
+            if (array != null) {
                 for (T value : array) {
                     newList.addLast(value);
                 }
@@ -108,14 +137,19 @@ public class FileManager {
         }
     }
 
-
+    /**
+     * Saves a MaxHeap to a JSON file.
+     *
+     * @param maxHeap The MaxHeap to be saved.
+     * @throws IOException If an I/O error occurs.
+     */
     public void saveMaxHeapToJSON(MaxHeap<?> maxHeap) throws IOException {
         createResources();
 
         Gson gson = new Gson();
 
         try (FileWriter writer = new FileWriter(maxheapFile)) {
-            // Convertir cada elemento individualmente a JSON
+            // Convert each element individually to JSON
             for (Object element : maxHeap.getElements()) {
                 String data = gson.toJson(element);
                 writer.write(data + "\n");
@@ -123,6 +157,12 @@ public class FileManager {
         }
     }
 
+    /**
+     * Loads a MaxHeap from a JSON file.
+     *
+     * @return The loaded MaxHeap.
+     * @throws IOException If an I/O error occurs.
+     */
     public MaxHeap<Task> loadMaxHeapFromJSON() throws IOException {
         Gson gson = new Gson();
 
@@ -138,5 +178,4 @@ public class FileManager {
 
         return loadedHeap;
     }
-
 }

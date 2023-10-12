@@ -8,6 +8,9 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Unit tests for the Stack interface.
+ */
 public class StackTest {
     private Stack<Integer> stack;
     private final int NUM_ELEMENTS =100;

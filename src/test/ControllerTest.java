@@ -6,6 +6,9 @@ import model.Controller;
 
 import model.ArrayList;
 
+/**
+ * Unit tests for the Controller class.
+ */
 public class ControllerTest {
     private Controller controller;
 

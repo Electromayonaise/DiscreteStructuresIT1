@@ -6,6 +6,9 @@ import model.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Unit tests for the Queue interface.
+ */
 public class QueueTest {
     private Queue<Integer> queue;
     private final int NUM_ELEMENTS =100;

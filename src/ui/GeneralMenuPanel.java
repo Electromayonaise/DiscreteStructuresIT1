@@ -6,13 +6,24 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+/**
+ * A panel representing the general menu of the task manager application.
+ */
 public class GeneralMenuPanel extends BasePanel {
 
+    /**
+     * Constructs a GeneralMenuPanel.
+     *
+     * @param containerPanel the container panel for managing card layout
+     */
     public GeneralMenuPanel(JPanel containerPanel) {
         super(containerPanel);
         initUI();
     }
 
+    /**
+     * Initializes the user interface components.
+     */
     private void initUI() {
         setLayout(new BorderLayout());
         Color myRed = new Color(255, 175, 175);
@@ -30,12 +41,14 @@ public class GeneralMenuPanel extends BasePanel {
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.insets = new Insets(10, 10, 10, 10);
 
+        // Create a button for tasks
         JButton tasksButton = createStyledButton("Tasks", myRed);
         tasksButton.addActionListener(e -> showPanel());
         gbc.gridx = 0;
         gbc.gridy = 0;
         buttonPanel.add(tasksButton, gbc);
 
+        // Create a button for closing the program
         JButton closeButton = createStyledButton("Close Program", myRed);
         closeButton.addActionListener(e -> System.exit(0));
         gbc.gridy = 1;
@@ -62,6 +75,13 @@ public class GeneralMenuPanel extends BasePanel {
         add(buttonPanel, BorderLayout.CENTER);
     }
 
+    /**
+     * Creates a styled JButton with specific text and background color.
+     *
+     * @param text   the text to be displayed on the button
+     * @param bgColor the background color of the button
+     * @return the styled JButton
+     */
     protected JButton createStyledButton(String text, Color bgColor) {
         JButton button = new JButton(text);
         button.setFont(new Font("Arial", Font.BOLD, 30));
@@ -72,15 +92,11 @@ public class GeneralMenuPanel extends BasePanel {
         return button;
     }
 
-    // Helper method to show a specific panel
+    /**
+     * Helper method to show a specific panel using card layout.
+     */
     private void showPanel() {
         CardLayout cardLayout = (CardLayout) containerPanel.getLayout();
         cardLayout.show(containerPanel, "TasksPanel");
     }
 }
-
-
-
-
-
-

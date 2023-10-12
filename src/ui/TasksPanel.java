@@ -6,6 +6,10 @@ import java.awt.*;
 import model.ArrayList;
 import model.Controller;
 
+/**
+ * The TasksPanel class represents a panel for managing tasks in the Task Manager application.
+ * It provides features for displaying, adding, modifying, and deleting tasks.
+ */
 public class TasksPanel extends BasePanel {
     private final Controller controller;
 
@@ -19,12 +23,20 @@ public class TasksPanel extends BasePanel {
     private DefaultListModel<String> taskNameListModel; // List to store task names
     private boolean displayByPriority = true; // Track the current display mode
 
+    /**
+     * Constructs a TasksPanel with a reference to the container panel.
+     *
+     * @param containerPanel The container panel that holds this TasksPanel.
+     */
     public TasksPanel(JPanel containerPanel) {
         super(containerPanel);
         controller = Controller.getInstance();
         initUI();
     }
 
+    /**
+     * Initializes the UI components of the TasksPanel.
+     */
     private void initUI() {
         setLayout(new BorderLayout()); // Use BorderLayout for better element placement
         setOpaque(false); // Make the panel transparent
@@ -231,16 +243,26 @@ public class TasksPanel extends BasePanel {
         // Button to undo the last action
         JButton undoButton = createStyledButton("Undo", myRed);
         undoButton.addActionListener(e -> {
-            JOptionPane.showMessageDialog(TasksPanel.this, "Undo is not implemented yet.", "Error", JOptionPane.ERROR_MESSAGE);
-            /**controller.undo(displayByPriority, 1);
-            refreshDisplay();
-            JOptionPane.showMessageDialog(TasksPanel.this, "Undo successful.", "Success", JOptionPane.INFORMATION_MESSAGE); */
+
+            boolean undo = controller.undo();
+            if(undo){
+                refreshDisplay();
+                JOptionPane.showMessageDialog(TasksPanel.this, "Undo successful.", "Success", JOptionPane.INFORMATION_MESSAGE);
+
+            }else{
+                JOptionPane.showMessageDialog(TasksPanel.this, "No undo possible", "Error", JOptionPane.ERROR_MESSAGE);
+            }
         });
 
         // Add the undo button to the left column panel
         leftColumnPanel.add(undoButton, BorderLayout.SOUTH);
     }
 
+    /**
+     * Creates and returns a styled JSlider for selecting task priorities.
+     *
+     * @return A JSlider with specific styling.
+     */
     private JSlider getjSlider() {
         JSlider slider = new JSlider(JSlider.HORIZONTAL, 0, 3, 1);
         slider.setMajorTickSpacing(1);
@@ -256,6 +278,9 @@ public class TasksPanel extends BasePanel {
         return slider;
     }
 
+    /**
+     * Updates the task list models based on the current display mode.
+     */
     private void updateTaskListModels() {
         taskNameListModel.clear();
         taskListModel.clear();
@@ -280,7 +305,12 @@ public class TasksPanel extends BasePanel {
     }
 
 
-    // Fetch tasks based on user choice (priority or arrival order)
+    /**
+     * Fetches tasks based on the specified display mode (priority or arrival order).
+     *
+     * @param byPriority True if tasks should be fetched by priority, false for arrival order.
+     * @return A list of tasks with their attributes.
+     */
     private ArrayList<ArrayList<String>> fetchTasks(boolean byPriority) {
         if (byPriority) {
             return controller.getPrioritizedTasksAttributes();
@@ -289,12 +319,19 @@ public class TasksPanel extends BasePanel {
         }
     }
 
-    // Refresh the display panel to update the displayed tasks
+    /**
+     * Refreshes the display panel to update the displayed tasks.
+     */
     private void refreshDisplay() {
         cardLayout.show(displayPanel, displayByPriority ? "Priority" : "Arrival");
         updateTaskListModels();
     }
 
+    /**
+     * Shows detailed information about a selected task.
+     *
+     * @param selectedTaskName The name of the selected task.
+     */
     private void showTaskInfo(String selectedTaskName) {
         ArrayList<ArrayList<String>> tasks = fetchTasks(displayByPriority);
         for (ArrayList<String> task : tasks) {

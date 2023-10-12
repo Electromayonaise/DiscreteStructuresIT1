@@ -9,6 +9,9 @@ import model.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * Unit tests for the MaxHeap class.
+ */
 public class MaxHeapTest {
     private MaxHeap<Task> heap;
     public final int NUM_ELEMENTS=100;

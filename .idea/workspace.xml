@@ -7,11 +7,33 @@
     <list default="true" id="c8e84ba1-edba-48c2-a132-cc16120936e1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/controller.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/doubly.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/doubly.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/maxheap.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/maxheap.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DiscreteStructuresIT1/ui/TasksPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DiscreteStructuresIT1/ui/TasksPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/ArrayList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ArrayList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/BiPredicate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/BiPredicate.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/DoublyLinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/DoublyLinkedList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/FileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/FileManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/HashTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/HashTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/HeapKeyProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/HeapKeyProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/MaxHeap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/MaxHeap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Node.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Pair.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Pair.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/PriorityQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/PriorityQueue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Queue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Queue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Stack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Stack.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Task.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/ControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/ControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/DoublyLinkedListTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/DoublyLinkedListTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/HashTableTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/HashTableTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/MaxHeapTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/MaxHeapTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/QueueTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/QueueTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/StackTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/StackTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/BasePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/BasePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/GeneralMenuPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/GeneralMenuPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/TasksPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/TasksPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,28 +62,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/Aleja/OneDrive/Desktop/DiscreteStructuresIT1",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Aleja/OneDrive/Desktop/DiscreteStructuresIT1&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Code\Repositories\DiscreteStructuresIT1\lib" />
@@ -80,6 +102,11 @@
       <workItem from="1696881914341" duration="1264000" />
       <workItem from="1696974733920" duration="38000" />
       <workItem from="1696974780737" duration="4333000" />
+      <workItem from="1697066113438" duration="2000" />
+      <workItem from="1697066123994" duration="2927000" />
+      <workItem from="1697069467208" duration="73000" />
+      <workItem from="1697143907310" duration="3141000" />
+      <workItem from="1697147115890" duration="1453000" />
     </task>
     <servers />
   </component>

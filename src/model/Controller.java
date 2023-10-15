@@ -305,11 +305,10 @@ public class Controller {
             table.add(newTask.getTitle(), newTask);
             if(priorityLevel>0){
                 priorityQueue.insert(newTask);
-                saveData();
             }else{
                 queue.enqueue(newTask);
-                saveData();
             }
+	    saveData();
 
 
             flag=true;
